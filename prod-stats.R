@@ -32,3 +32,15 @@ barplot(prod_by_industry$Data_value, names.arg = prod_by_industry$Industry, las 
 #Checking the unique values in variables
 unique(data$Industry)
 unique(data$Measure)
+#One value for each year despite the .03 in each period
+unique(data$Period)
+
+#Examining the productivity from each year
+aggregate(Data_value ~ Period, data, FUN = mean)
+#Quick plot of the results
+plot(aggregate(Data_value ~ Period, data, FUN = mean))
+
+
+
+
+
