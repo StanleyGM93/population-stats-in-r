@@ -40,6 +40,12 @@ aggregate(Data_value ~ Period, data, FUN = mean)
 #Quick plot of the results
 plot(aggregate(Data_value ~ Period, data, FUN = mean))
 
+#Investigate why productivity in 1978 was so high
+period_1978 <- data[data$Period == 1978.03,]
+#As this was the first year it is the baseline
+#It shall be excluded from plotting and analysis where applicable
+
+
 
 
 
