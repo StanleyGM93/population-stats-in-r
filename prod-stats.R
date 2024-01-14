@@ -45,7 +45,12 @@ period_1978 <- data[data$Period == 1978.03,]
 #As this was the first year it is the baseline
 #It shall be excluded from plotting and analysis where applicable
 
+#Analyse the Measure column to see different types of measurement
+unique(data$Measure)
 
+#Isolate the index and Percentage change measurement types
+index_data <- data[data$Measure == "Index",]
+percent_change_data <- data[data$Measure == "Percentage Change",]
 
 
 
