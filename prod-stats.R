@@ -1,5 +1,9 @@
 #Population stats for 1978-2022
 
+#Packages
+install.packages('ggplot2')
+library(ggplot2)
+
 #Read in the data
 data <- read.csv("~/R projects/population-stats-in-r/productivity-statistics-1978-2022.csv", header=TRUE)
 
@@ -52,6 +56,9 @@ unique(data$Measure)
 index_data <- data[data$Measure == "Index",]
 percent_change_data <- data[data$Measure == "Percentage Change",]
 
-
-
+#Graphing a specific industry
+#Industry of choice is Education and training
+edu_and_train_data <- index_data[index_data$Industry == "Education and Training",]
+ggplot(data=edu_and_train_data, aes(x=Period, y=Data_value, colour=Type)) +
+  geom_point()
 
