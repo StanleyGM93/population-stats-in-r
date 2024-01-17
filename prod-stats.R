@@ -62,3 +62,9 @@ edu_and_train_data <- index_data[index_data$Industry == "Education and Training"
 ggplot(data=edu_and_train_data, aes(x=Period, y=Data_value, colour=Type)) +
   geom_point()
 
+#Graphing all industries
+#Need to find a way to include industries
+total_info <- index_data[index_data$Type == "Total",]
+ggplot(data=total_info, aes(x=Period, y=Data_value)) +
+  geom_point()
+
