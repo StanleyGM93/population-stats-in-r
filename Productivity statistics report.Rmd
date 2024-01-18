@@ -1,0 +1,13 @@
+---
+title: "Analysis of Productivity Stats in NZ from 1978 - 2022"
+output: pdf_document
+date: "2024-01-18"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Analysis of Productivity Stats in NZ from 1978 - 2022
+
+This is a report to investigate the productivity statistics that were provided by [Stats NZ](https://www.stats.govt.nz/large-datasets/csv-files-for-download/).
