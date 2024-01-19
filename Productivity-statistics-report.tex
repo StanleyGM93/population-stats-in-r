@@ -37,6 +37,46 @@
 \makeatother
 \usepackage{xcolor}
 \usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -79,6 +119,50 @@
 This is a report to investigate the productivity statistics that were
 provided by
 \href{https://www.stats.govt.nz/large-datasets/csv-files-for-download/}{Stats
-NZ}.
+NZ}. I've chosen to look through the data to find any meaningful
+insights as to how the different industries have changed over the 44
+years of data.
+
+\#Introduction
+
+A glance into the data indicates a large variety of productivity
+measures contained within. The first rows of the data are as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Series_reference  Period Data_value Status Units Magnitude
+## 1     PRDA.S1CAAZI 1978.03       1000  FINAL Index         0
+## 2     PRDA.S1CAAZI 1979.03        947  FINAL Index         0
+## 3     PRDA.S1CAAZI 1980.03       1054  FINAL Index         0
+## 4     PRDA.S1CAAZI 1981.03       1167  FINAL Index         0
+## 5     PRDA.S1CAAZI 1982.03       1144  FINAL Index         0
+## 6     PRDA.S1CAAZI 1983.03       1164  FINAL Index         0
+##                         Subject
+## 1 Productivity Statistics - PRD
+## 2 Productivity Statistics - PRD
+## 3 Productivity Statistics - PRD
+## 4 Productivity Statistics - PRD
+## 5 Productivity Statistics - PRD
+## 6 Productivity Statistics - PRD
+##                                              Group    Type
+## 1 Productivity Indexes - Industry Level (ANZSIC06) Capital
+## 2 Productivity Indexes - Industry Level (ANZSIC06) Capital
+## 3 Productivity Indexes - Industry Level (ANZSIC06) Capital
+## 4 Productivity Indexes - Industry Level (ANZSIC06) Capital
+## 5 Productivity Indexes - Industry Level (ANZSIC06) Capital
+## 6 Productivity Indexes - Industry Level (ANZSIC06) Capital
+##                            Industry Measure
+## 1 Agriculture, Forestry and Fishing   Index
+## 2 Agriculture, Forestry and Fishing   Index
+## 3 Agriculture, Forestry and Fishing   Index
+## 4 Agriculture, Forestry and Fishing   Index
+## 5 Agriculture, Forestry and Fishing   Index
+## 6 Agriculture, Forestry and Fishing   Index
+\end{verbatim}
 
 \end{document}

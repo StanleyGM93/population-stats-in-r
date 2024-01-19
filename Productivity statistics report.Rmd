@@ -6,8 +6,24 @@ date: "2024-01-18"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+#Read in the data
+data <- read.csv("~/R projects/population-stats-in-r/productivity-statistics-1978-2022.csv", header=TRUE)
+data <- data[, 1:11]
+
+#Renaming of the data columns
+new_data_col_names <- c("Series_reference","Period","Data_value","Status","Units","Magnitude",
+                        "Subject","Group","Type","Industry","Measure")
+names(data) <- new_data_col_names
 ```
 
 ## Analysis of Productivity Stats in NZ from 1978 - 2022
 
-This is a report to investigate the productivity statistics that were provided by [Stats NZ](https://www.stats.govt.nz/large-datasets/csv-files-for-download/).
+This is a report to investigate the productivity statistics that were provided by [Stats NZ](https://www.stats.govt.nz/large-datasets/csv-files-for-download/). I've chosen to look through the data to find any meaningful insights as to how the different industries have changed over the 44 years of data.
+
+#Introduction
+
+A glance into the data indicates a large variety of productivity measures contained within. The first rows of the data are as follows:
+
+```{r}
+head(data)
+```
