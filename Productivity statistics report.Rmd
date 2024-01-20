@@ -27,3 +27,16 @@ A glance into the data indicates a large variety of productivity measures contai
 ```{r}
 head(data)
 ```
+
+A summary of the data provided below:
+```{r}
+summary(data)
+```
+
+The structure of the data:
+
+```{r}
+str(data)
+```
+
+

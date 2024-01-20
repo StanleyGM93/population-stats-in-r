@@ -165,4 +165,59 @@ measures contained within. The first rows of the data are as follows:
 ## 6 Agriculture, Forestry and Fishing   Index
 \end{verbatim}
 
+A summary of the data provided below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Series_reference       Period       Data_value         Status         
+##  Length:14792       Min.   :1978   Min.   :  -28.9   Length:14792      
+##  Class :character   1st Qu.:1993   1st Qu.:    1.6   Class :character  
+##  Mode  :character   Median :2004   Median :  597.5   Mode  :character  
+##                     Mean   :2003   Mean   : 1063.8                     
+##                     3rd Qu.:2013   3rd Qu.: 1308.0                     
+##                     Max.   :2022   Max.   :64878.0                     
+##     Units             Magnitude         Subject             Group          
+##  Length:14792       Min.   :0.00000   Length:14792       Length:14792      
+##  Class :character   1st Qu.:0.00000   Class :character   Class :character  
+##  Mode  :character   Median :0.00000   Mode  :character   Mode  :character  
+##                     Mean   :0.08924                                        
+##                     3rd Qu.:0.00000                                        
+##                     Max.   :3.00000                                        
+##      Type             Industry           Measure         
+##  Length:14792       Length:14792       Length:14792      
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##                                                          
+##                                                          
+## 
+\end{verbatim}
+
+The structure of the data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    14792 obs. of  11 variables:
+##  $ Series_reference: chr  "PRDA.S1CAAZI" "PRDA.S1CAAZI" "PRDA.S1CAAZI" "PRDA.S1CAAZI" ...
+##  $ Period          : num  1978 1979 1980 1981 1982 ...
+##  $ Data_value      : num  1000 947 1054 1167 1144 ...
+##  $ Status          : chr  "FINAL" "FINAL" "FINAL" "FINAL" ...
+##  $ Units           : chr  "Index" "Index" "Index" "Index" ...
+##  $ Magnitude       : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Subject         : chr  "Productivity Statistics - PRD" "Productivity Statistics - PRD" "Productivity Statistics - PRD" "Productivity Statistics - PRD" ...
+##  $ Group           : chr  "Productivity Indexes - Industry Level (ANZSIC06)" "Productivity Indexes - Industry Level (ANZSIC06)" "Productivity Indexes - Industry Level (ANZSIC06)" "Productivity Indexes - Industry Level (ANZSIC06)" ...
+##  $ Type            : chr  "Capital" "Capital" "Capital" "Capital" ...
+##  $ Industry        : chr  "Agriculture, Forestry and Fishing" "Agriculture, Forestry and Fishing" "Agriculture, Forestry and Fishing" "Agriculture, Forestry and Fishing" ...
+##  $ Measure         : chr  "Index" "Index" "Index" "Index" ...
+\end{verbatim}
+
 \end{document}
