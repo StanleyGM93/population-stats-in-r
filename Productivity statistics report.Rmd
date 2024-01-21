@@ -14,6 +14,7 @@ data <- data[, 1:11]
 new_data_col_names <- c("Series_reference","Period","Data_value","Status","Units","Magnitude",
                         "Subject","Group","Type","Industry","Measure")
 names(data) <- new_data_col_names
+non_blank_industries <- data[data$Industry != "",]
 ```
 
 ## Analysis of Productivity Stats in NZ from 1978 - 2022
@@ -37,6 +38,13 @@ The structure of the data:
 
 ```{r}
 str(data)
+```
+
+The initial year of 1978 was considered the base year with all industries getting a measure of their productivity as 1000. Below is a look at how the industries fared in 2022:
+
+```{r}
+prod_data_2022 <- data[data$Period == "2022.03" & data$Measure == "Index" & data$Type == "Total",]
+
 ```
 
 
