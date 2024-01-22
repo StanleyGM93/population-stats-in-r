@@ -6,6 +6,9 @@ date: "2024-01-18"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+#Packages
+library(ggplot2)
 #Read in the data
 data <- read.csv("~/R projects/population-stats-in-r/productivity-statistics-1978-2022.csv", header=TRUE)
 data <- data[, 1:11]
@@ -44,6 +47,19 @@ The initial year of 1978 was considered the base year with all industries gettin
 
 ```{r}
 prod_data_2022 <- data[data$Period == "2022.03" & data$Measure == "Index" & data$Type == "Total",]
+library(ggplot2)
+
+# Will plot the top 5 and bottom 5 industries
+ggplot(data = prod_data_2022, aes(x = Data_value, y = Industry)) +
+  geom_bar(stat = "identity", fill = "skyblue", color = "black") +
+  labs(title = "Productivity of all industries in 2022", x = "Productivity measure", y = "Industry") +
+  theme_minimal()
+
+
+
+
+
+
 
 ```
 
