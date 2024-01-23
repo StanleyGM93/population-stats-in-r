@@ -63,4 +63,18 @@ ggplot(data = prod_data_2022, aes(x = Data_value, y = Industry)) +
 
 ```
 
+Taking a closer look into the top 5 most productive industries - which by the design of the data, have had the highest percentage change since inception of the measure in NZ.
+
+```{r}
+ordered_2022_data <- prod_data_2022[order(prod_data_2022$Data_value),]
+top_5_industries <- ordered_2022_data[-(1:17),]
+ggplot(data = top_5_industries, aes(x = Data_value, y = Industry)) +
+  geom_bar(stat = "identity", fill = "skyblue", color = "black") +
+  labs(title = "Productivity of all industries in 2022", x = "Productivity measure", y = "Industry") +
+  theme_minimal()
+```
+
+
+
+
 
