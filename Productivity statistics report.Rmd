@@ -70,7 +70,7 @@ ordered_2022_data <- prod_data_2022[order(prod_data_2022$Data_value),]
 top_5_industries <- ordered_2022_data[-(1:17),]
 ggplot(data = top_5_industries, aes(x = Data_value, y = Industry)) +
   geom_bar(stat = "identity", fill = "skyblue", color = "black") +
-  labs(title = "Productivity of all industries in 2022", x = "Productivity measure", y = "Industry") +
+  labs(title = "Productivity of top 5 industries in 2022", x = "Productivity measure", y = "Industry") +
   theme_minimal()
 ```
 
@@ -80,7 +80,7 @@ Now looking into the lowest productive industries:
 bottom_5_industries <- ordered_2022_data[-(6:22),]
 ggplot(data = bottom_5_industries, aes(x = Data_value, y = Industry)) +
   geom_bar(stat = "identity", fill = "skyblue", color = "black") +
-  labs(title = "Productivity of all industries in 2022", x = "Productivity measure", y = "Industry") +
+  labs(title = "Productivity of bottom 5 industries in 2022", x = "Productivity measure", y = "Industry") +
   theme_minimal()
 ```
 
