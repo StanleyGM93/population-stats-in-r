@@ -83,6 +83,12 @@ ggplot(data = bottom_5_industries, aes(x = Data_value, y = Industry)) +
   labs(title = "Productivity of bottom 5 industries in 2022", x = "Productivity measure", y = "Industry") +
   theme_minimal()
 ```
+Having a look into the types of productivity in the top 5 industries:
+```{r}
+types_of_interest <- c("Capital", "Labour", )
+top_5_industry_prod_data <- data[data$Period == "2022.03" & data$Measure == "Index" & data$Group == "Productivity Indexes - Industry Level (ANZSIC06)",]
 
+ggplot()
+```
 
 
