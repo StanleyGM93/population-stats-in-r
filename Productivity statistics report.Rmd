@@ -88,7 +88,8 @@ Having a look into the types of productivity in the top 5 industries:
 types_of_interest <- c("Capital", "Labour", )
 top_5_industry_prod_data <- data[data$Period == "2022.03" & data$Measure == "Index" & data$Group == "Productivity Indexes - Industry Level (ANZSIC06)",]
 
-ggplot()
+ggplot(data=top_5_industry_prod_data, aes(x=Industry, y=Data_value)) + 
+  geom_col()
 ```
 
 
