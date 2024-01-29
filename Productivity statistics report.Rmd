@@ -90,8 +90,10 @@ types_of_interest <- c("Capital", "Labour", )
 all_industry_prod_data_2022 <- data[data$Period == "2022.03" & data$Measure == "Index" & data$Group == "Productivity Indexes - Industry Level (ANZSIC06)",]
 top_5_industry_prod_data_2022 <- all_industry_prod_data_2022[all_industry_prod_data_2022$Industry %in%  top_5_industries_by_name,]
 
-ggplot(data=top_5_industry_prod_data_2022, aes(x=Industry, y=Data_value)) + 
-  geom_col()
+ggplot(data = top_5_industry_prod_data_2022, aes(x = Data_value, y = Industry, fill=Type)) +
+  geom_bar(stat = "identity", color = "black") +
+  labs(title = "Productivity of bottom 5 industries in 2022", x = "Productivity measure", y = "Industry") +
+  theme_minimal()
 ```
 
 
