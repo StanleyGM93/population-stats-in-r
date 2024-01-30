@@ -86,7 +86,6 @@ ggplot(data = bottom_5_industries, aes(x = Data_value, y = Industry)) +
 Having a look into the types of productivity in the top 5 industries:
 ```{r}
 top_5_industries_by_name <- top_5_industries[,"Industry"]
-types_of_interest <- c("Capital", "Labour", )
 all_industry_prod_data_2022 <- data[data$Period == "2022.03" & data$Measure == "Index" & data$Group == "Productivity Indexes - Industry Level (ANZSIC06)",]
 top_5_industry_prod_data_2022 <- all_industry_prod_data_2022[all_industry_prod_data_2022$Industry %in%  top_5_industries_by_name,]
 
@@ -95,5 +94,26 @@ ggplot(data = top_5_industry_prod_data_2022, aes(x = Data_value, y = Industry, f
   labs(title = "Productivity of bottom 5 industries in 2022", x = "Productivity measure", y = "Industry") +
   theme_minimal()
 ```
+Now looking at the bottom 5 industries
+```{r}
+bottom_5_industries_by_name <- bottom_5_industries[,"Industry"]
+bottom_5_industry_prod_data_2022 <- all_industry_prod_data_2022[all_industry_prod_data_2022$Industry %in%  bottom_5_industries_by_name,]
+
+ggplot(data = bottom_5_industry_prod_data_2022, aes(x = Data_value, y = Industry, fill=Type)) +
+  geom_bar(stat = "identity", color = "black") +
+  labs(title = "Productivity of bottom 5 industries in 2022", x = "Productivity measure", y = "Industry") +
+  theme_minimal()
+
+```
+
+
+
+
+
+
+
+
+
+
 
 
