@@ -105,7 +105,16 @@ ggplot(data = bottom_5_industry_prod_data_2022, aes(x = Data_value, y = Industry
   theme_minimal()
 
 ```
+```{r}
+investigating_data_group <- data[data$Period == "2022.03" & data$Measure == "Index",]
+#Focus on productivity output
+prod_output_2022 <- investigating_data_group[investigating_data_group$Group == "Productivity Output Series - Industry Level (ANZSIC06)",]
 
+ggplot(data = prod_output_2022, aes(x = Data_value, y = Industry)) +
+  geom_bar(stat = "identity", fill = "skyblue", color = "black") +
+  labs(title = "Productivity output of industries in 2022", x = "Productivity measure", y = "Industry") +
+  theme_minimal()
+```
 
 
 
