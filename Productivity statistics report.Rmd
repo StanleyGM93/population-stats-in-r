@@ -116,7 +116,7 @@ ggplot(data = prod_output_2022, aes(x = Data_value, y = Industry)) +
   theme_minimal()
 ```
 
-
+Look to complete report - unsure on what some measures are.
 
 
 

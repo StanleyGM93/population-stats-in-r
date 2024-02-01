@@ -220,4 +220,100 @@ The structure of the data:
 ##  $ Measure         : chr  "Index" "Index" "Index" "Index" ...
 \end{verbatim}
 
+The initial year of 1978 was considered the base year with all
+industries getting a measure of their productivity as 1000. Below is a
+look at how the industries fared in 2022:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{prod\_data\_2022 }\OtherTok{\textless{}{-}}\NormalTok{ data[data}\SpecialCharTok{$}\NormalTok{Period }\SpecialCharTok{==} \StringTok{"2022.03"} \SpecialCharTok{\&}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{Measure }\SpecialCharTok{==} \StringTok{"Index"} \SpecialCharTok{\&}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{Type }\SpecialCharTok{==} \StringTok{"Total"}\NormalTok{,]}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{\# Will plot the top 5 and bottom 5 industries}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ prod\_data\_2022, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Data\_value, }\AttributeTok{y =}\NormalTok{ Industry)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"skyblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Productivity of all industries in 2022"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Productivity measure"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Industry"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Productivity-statistics-report_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+Taking a closer look into the top 5 most productive industries - which
+by the design of the data, have had the highest percentage change since
+inception of the measure in NZ.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ordered\_2022\_data }\OtherTok{\textless{}{-}}\NormalTok{ prod\_data\_2022[}\FunctionTok{order}\NormalTok{(prod\_data\_2022}\SpecialCharTok{$}\NormalTok{Data\_value),]}
+\NormalTok{top\_5\_industries }\OtherTok{\textless{}{-}}\NormalTok{ ordered\_2022\_data[}\SpecialCharTok{{-}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{17}\NormalTok{),]}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ top\_5\_industries, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Data\_value, }\AttributeTok{y =}\NormalTok{ Industry)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"skyblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Productivity of top 5 industries in 2022"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Productivity measure"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Industry"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Productivity-statistics-report_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+Now looking into the lowest productive industries:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bottom\_5\_industries }\OtherTok{\textless{}{-}}\NormalTok{ ordered\_2022\_data[}\SpecialCharTok{{-}}\NormalTok{(}\DecValTok{6}\SpecialCharTok{:}\DecValTok{22}\NormalTok{),]}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ bottom\_5\_industries, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Data\_value, }\AttributeTok{y =}\NormalTok{ Industry)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"skyblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Productivity of bottom 5 industries in 2022"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Productivity measure"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Industry"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Productivity-statistics-report_files/figure-latex/unnamed-chunk-6-1.pdf}
+Having a look into the types of productivity in the top 5 industries:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{top\_5\_industries\_by\_name }\OtherTok{\textless{}{-}}\NormalTok{ top\_5\_industries[,}\StringTok{"Industry"}\NormalTok{]}
+\NormalTok{all\_industry\_prod\_data\_2022 }\OtherTok{\textless{}{-}}\NormalTok{ data[data}\SpecialCharTok{$}\NormalTok{Period }\SpecialCharTok{==} \StringTok{"2022.03"} \SpecialCharTok{\&}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{Measure }\SpecialCharTok{==} \StringTok{"Index"} \SpecialCharTok{\&}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{Group }\SpecialCharTok{==} \StringTok{"Productivity Indexes {-} Industry Level (ANZSIC06)"}\NormalTok{,]}
+\NormalTok{top\_5\_industry\_prod\_data\_2022 }\OtherTok{\textless{}{-}}\NormalTok{ all\_industry\_prod\_data\_2022[all\_industry\_prod\_data\_2022}\SpecialCharTok{$}\NormalTok{Industry }\SpecialCharTok{\%in\%}\NormalTok{  top\_5\_industries\_by\_name,]}
+
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ top\_5\_industry\_prod\_data\_2022, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Data\_value, }\AttributeTok{y =}\NormalTok{ Industry, }\AttributeTok{fill=}\NormalTok{Type)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Productivity of bottom 5 industries in 2022"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Productivity measure"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Industry"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Productivity-statistics-report_files/figure-latex/unnamed-chunk-7-1.pdf}
+Now looking at the bottom 5 industries
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bottom\_5\_industries\_by\_name }\OtherTok{\textless{}{-}}\NormalTok{ bottom\_5\_industries[,}\StringTok{"Industry"}\NormalTok{]}
+\NormalTok{bottom\_5\_industry\_prod\_data\_2022 }\OtherTok{\textless{}{-}}\NormalTok{ all\_industry\_prod\_data\_2022[all\_industry\_prod\_data\_2022}\SpecialCharTok{$}\NormalTok{Industry }\SpecialCharTok{\%in\%}\NormalTok{  bottom\_5\_industries\_by\_name,]}
+
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ bottom\_5\_industry\_prod\_data\_2022, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Data\_value, }\AttributeTok{y =}\NormalTok{ Industry, }\AttributeTok{fill=}\NormalTok{Type)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Productivity of bottom 5 industries in 2022"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Productivity measure"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Industry"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Productivity-statistics-report_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{investigating\_data\_group }\OtherTok{\textless{}{-}}\NormalTok{ data[data}\SpecialCharTok{$}\NormalTok{Period }\SpecialCharTok{==} \StringTok{"2022.03"} \SpecialCharTok{\&}\NormalTok{ data}\SpecialCharTok{$}\NormalTok{Measure }\SpecialCharTok{==} \StringTok{"Index"}\NormalTok{,]}
+\CommentTok{\#Focus on productivity output}
+\NormalTok{prod\_output\_2022 }\OtherTok{\textless{}{-}}\NormalTok{ investigating\_data\_group[investigating\_data\_group}\SpecialCharTok{$}\NormalTok{Group }\SpecialCharTok{==} \StringTok{"Productivity Output Series {-} Industry Level (ANZSIC06)"}\NormalTok{,]}
+
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ prod\_output\_2022, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Data\_value, }\AttributeTok{y =}\NormalTok{ Industry)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"skyblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Productivity output of industries in 2022"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Productivity measure"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Industry"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Productivity-statistics-report_files/figure-latex/unnamed-chunk-9-1.pdf}
+
 \end{document}
