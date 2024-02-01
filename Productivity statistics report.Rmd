@@ -43,6 +43,8 @@ The structure of the data:
 str(data)
 ```
 
+# 2022 Q3 results
+
 The initial year of 1978 was considered the base year with all industries getting a measure of their productivity as 1000. Below is a look at how the industries fared in 2022:
 
 ```{r}
@@ -118,6 +120,7 @@ ggplot(data = prod_output_2022, aes(x = Data_value, y = Industry)) +
 
 Look to complete report - unsure on what some measures are.
 
+#Summary
 
 
 
