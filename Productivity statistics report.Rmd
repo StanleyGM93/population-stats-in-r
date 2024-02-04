@@ -48,7 +48,7 @@ str(data)
 The initial year of 1978 was considered the base year with all industries getting a measure of their productivity as 1000. Below is a look at how the industries fared in 2022:
 
 ```{r}
-prod_data_2022 <- data[data$Period == "2022.03" & data$Measure == "Index" & data$Type == "Total",]
+prod_data_2022 <- data[data$Period == "2022.03" & data$Measure == "Index" & data$Type == "Output",]
 library(ggplot2)
 
 # Will plot the top 5 and bottom 5 industries
@@ -85,38 +85,7 @@ ggplot(data = bottom_5_industries, aes(x = Data_value, y = Industry)) +
   labs(title = "Productivity of bottom 5 industries in 2022", x = "Productivity measure", y = "Industry") +
   theme_minimal()
 ```
-Having a look into the types of productivity in the top 5 industries:
-```{r}
-top_5_industries_by_name <- top_5_industries[,"Industry"]
-all_industry_prod_data_2022 <- data[data$Period == "2022.03" & data$Measure == "Index" & data$Group == "Productivity Indexes - Industry Level (ANZSIC06)",]
-top_5_industry_prod_data_2022 <- all_industry_prod_data_2022[all_industry_prod_data_2022$Industry %in%  top_5_industries_by_name,]
 
-ggplot(data = top_5_industry_prod_data_2022, aes(x = Data_value, y = Industry, fill=Type)) +
-  geom_bar(stat = "identity", color = "black") +
-  labs(title = "Productivity of bottom 5 industries in 2022", x = "Productivity measure", y = "Industry") +
-  theme_minimal()
-```
-Now looking at the bottom 5 industries
-```{r}
-bottom_5_industries_by_name <- bottom_5_industries[,"Industry"]
-bottom_5_industry_prod_data_2022 <- all_industry_prod_data_2022[all_industry_prod_data_2022$Industry %in%  bottom_5_industries_by_name,]
-
-ggplot(data = bottom_5_industry_prod_data_2022, aes(x = Data_value, y = Industry, fill=Type)) +
-  geom_bar(stat = "identity", color = "black") +
-  labs(title = "Productivity of bottom 5 industries in 2022", x = "Productivity measure", y = "Industry") +
-  theme_minimal()
-
-```
-```{r}
-investigating_data_group <- data[data$Period == "2022.03" & data$Measure == "Index",]
-#Focus on productivity output
-prod_output_2022 <- investigating_data_group[investigating_data_group$Group == "Productivity Output Series - Industry Level (ANZSIC06)",]
-
-ggplot(data = prod_output_2022, aes(x = Data_value, y = Industry)) +
-  geom_bar(stat = "identity", fill = "skyblue", color = "black") +
-  labs(title = "Productivity output of industries in 2022", x = "Productivity measure", y = "Industry") +
-  theme_minimal()
-```
 
 Look to complete report - unsure on what some measures are.
 
