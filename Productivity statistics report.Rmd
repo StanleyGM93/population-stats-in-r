@@ -90,7 +90,7 @@ ggplot(data = bottom_5_industries, aes(x = Data_value, y = Industry)) +
 Look to complete report - unsure on what some measures are.
 
 #Summary
-
+I should definitely have researched what is involved in productivity statistics and data before beginning on this endeavour. 
 
 
 
