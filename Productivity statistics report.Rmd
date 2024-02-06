@@ -90,7 +90,7 @@ ggplot(data = bottom_5_industries, aes(x = Data_value, y = Industry)) +
 Look to complete report - unsure on what some measures are.
 
 #Summary
-I should definitely have researched what is involved in productivity statistics and data before beginning on this endeavour. 
+I should definitely have researched what is involved in productivity statistics and data before beginning on this endeavour. I managed to trim down the dataset by removing empty columns and understanding the data frame supplied. There was only one column on measurements which made it easier to get my head around. From there it was understanding that the initial year was considered a baseline year with all data values given as 1000. 
 
 
 
