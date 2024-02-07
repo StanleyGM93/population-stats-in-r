@@ -92,6 +92,8 @@ Look to complete report - unsure on what some measures are.
 #Summary
 I should definitely have researched what is involved in productivity statistics and data before beginning on this endeavour. I managed to trim down the dataset by removing empty columns and understanding the data frame supplied. There was only one column on measurements which made it easier to get my head around. From there it was understanding that the initial year was considered a baseline year with all data values given as 1000. 
 
+Information media and communication was by far the most productive industry of all of those measured. This isn't surprising due to the great techonological age that we live in. It is also a service rather than a good which helps with scale of outputs. 
+
 
 
 
